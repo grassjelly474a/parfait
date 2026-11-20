@@ -1,0 +1,59 @@
+cabal-version:      3.0
+name:               parfait
+version:            0.1.0.0
+-- synopsis:
+-- description:
+license:            MIT
+license-file:       LICENSE
+author:             grassjelly474a
+maintainer:         grassjelly474a@gmail.com
+category:           Web
+build-type:         Simple
+
+common warnings
+    ghc-options:
+        -Wall
+        -Wextra
+        -Wcompat
+        -Wincomplete-uni-patterns
+        -Wincomplete-record-updates
+        -Wmissing-export-lists
+        -threaded
+
+library
+    import:           warnings
+    exposed-modules:
+        Web.Parfait,
+        Web.Parfait.App,
+        Web.Parfait.Html.Attribute,
+        Web.Parfait.Html.Element,
+        Web.Parfait.Html.Serialize,
+        Web.Parfait.Vdom,
+        Web.Parfait.Vdom.ClientScript
+    -- other-modules:
+    -- other-extensions:
+    build-depends:
+        base ^>=4.20.2.0,
+        unordered-containers,
+        scotty,
+        text,
+        mtl,
+        wai,
+        wai-websockets,
+        websockets,
+        warp
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+test-suite parfait-test
+    import:           warnings
+    default-language: Haskell2010
+    -- other-modules:
+    -- other-extensions:
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.20.2.0,
+        parfait,
+        text
